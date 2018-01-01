@@ -42,6 +42,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+//        getFragmentManager().beginTransaction().replace(R.id.container, new LatestMovie(),
+//               "latest movie").commit();
+
     }
 
     @Override
@@ -86,6 +90,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
             // Handle the camera action
             getFragmentManager().beginTransaction().replace(R.id.container, new Login(), "login").commit();
         } else if (id == R.id.nav_gallery) {
+            getFragmentManager().beginTransaction().replace(R.id.container, new LatestMovie(),"Movie").commit();
 
         } else if (id == R.id.nav_slideshow) {
 

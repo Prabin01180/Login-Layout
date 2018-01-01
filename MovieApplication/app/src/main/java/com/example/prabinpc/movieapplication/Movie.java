@@ -2,13 +2,15 @@ package com.example.prabinpc.movieapplication;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Movie {
     @SerializedName("poster_path")
     private String posterPath;
     @SerializedName("overview")
     private String overview;
     @SerializedName("genre_ids")
-    private Integer id;
+    private List<Integer> id;
     @SerializedName("title")
     private String title;
     @SerializedName("vote_count")
@@ -16,11 +18,11 @@ public class Movie {
     @SerializedName("vote_average")
     private Double voteAverage;
 
-    public Movie(String posterPath,  String overview, Integer id, String title, Integer voteCount,
+    public Movie(String posterPath,  String overview, List<Integer> id, String title, Integer voteCount,
                  Double voteAverage) {
         this.posterPath = posterPath;
         this.overview = overview;
-        this.id = id;
+        this.id.addAll(id);
         this.title = title;
         this.voteCount = voteCount;
         this.voteAverage = voteAverage;
@@ -43,12 +45,12 @@ public class Movie {
         this.overview = overview;
     }
 
-    public Integer getId() {
+    public List<Integer> getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(List<Integer> id) {
+        this.id.addAll(id);
     }
 
     public String getTitle() {

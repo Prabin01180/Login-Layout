@@ -9,41 +9,71 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
+//        viewPager = (ViewPager) findViewById(R.id.viewpager);
+//        setupViewPager(viewPager);
+//
+//        tabLayout = (TabLayout) findViewById(R.id.tabs);
+//        tabLayout.setupWithViewPager(viewPager);
+//
+//        NavigationDrawerActivity.start(this);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getFragmentManager().beginTransaction().replace(R.id.container, new LatestMovie(),
+                "latest movie").commit();
+    }
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
-        NavigationDrawerActivity.start(this);
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new OneFragment(), "Latest");
         adapter.addFragment(new TwoFragment(), "Most Reviewed");
-        adapter.addFragment(new ThreeFragment(),"Top Rated");
+        adapter.addFragment(new ThreeFragment(), "Top Rated");
         viewPager.setAdapter(adapter);
     }
 
